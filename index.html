@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>VITA·K Estrella 12 — Menú / Menu</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap');
+
+  :root {
+    --bg: #1a1510;
+    --card: #231e17;
+    --gold: #c9a84c;
+    --gold-dim: #8a7232;
+    --cream: #f0e6d0;
+    --cream-dim: #b8a88a;
+    --white: #faf6ee;
+    --red: #a63d2f;
+    --red-light: #c9503f;
+    --border: #3a3228;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Lora', Georgia, serif;
+    --font-ui: 'DM Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--cream);
+    min-height: 100vh;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(201,168,76,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, rgba(166,61,47,0.03) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner {
+    max-width: 540px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .logo-name {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 3px;
+  }
+  .logo-dot { color: var(--red); }
+  .logo-sub {
+    font-family: var(--font-ui);
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 1px;
+  }
+  .lang-btn {
+    position: absolute;
+    right: 20px;
+    background: none;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+  }
+
+  .wrap {
+    max-width: 540px;
+    margin: 0 auto;
+    padding: 0 14px 140px;
+  }
+
+  .orn {
+    text-align: center;
+    padding: 10px 0 4px;
+    color: var(--gold-dim);
+    font-size: 13px;
+    letter-spacing: 8px;
+    opacity: 0.5;
+  }
+
+  .sec-title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--gold);
+    text-align: center;
+    padding: 16px 0 4px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .sec-sub {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    color: var(--cream-dim);
+    text-align: center;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 14px;
+    font-family: var(--font-ui);
+    font-size: 10px;
+    color: var(--cream-dim);
+  }
+  .legend i {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    margin-right: 4px;
+    vertical-align: middle;
+    font-style: normal;
+  }
+  .legend .lt { background: var(--gold); }
+  .legend .lr { background: var(--red); }
+
+  .cat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 22px 0 10px;
+  }
+  .cat::before, .cat::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  }
+  .cat span {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ─── MENU ROW ─── */
+  .row {
+    display: flex;
+    align-items: center;
+    padding: 11px 12px;
+    margin-bottom: 5px;
+    background: var(--card);
+    border-radius: 8px;
+  }
+  .row-info { flex: 1; min-width: 0; }
+  .row-name {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.3;
+  }
+  .row-name-en {
+    font-size: 11px;
+    font-style: italic;
+    color: var(--cream-dim);
+    display: none;
+  }
+  body.en .row-name-en { display: block; }
+  .row-note {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    color: var(--cream-dim);
+    margin-top: 1px;
+  }
+
+  /* ─── PRICE BUTTONS ─── */
+  .row-prices {
+    display: flex;
+    gap: 6px;
+    margin-left: 10px;
+    flex-shrink: 0;
+  }
+
+  /*
+    CRITICAL: These buttons have ZERO state changes.
+    No :hover, no :active, no :focus, no transitions.
+    This completely eliminates any mobile flash/flicker.
+  */
+  .pbtn {
+    position: relative;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    text-align: center;
+    min-width: 50px;
+    border: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .pbtn:focus { outline: none; }
+  .pbtn:active { outline: none; }
+  .pbtn:-webkit-any-link:active { outline: none; }
+
+  .pbtn-t {
+    color: var(--gold);
+    background: rgba(201,168,76,0.12);
+  }
+  .pbtn-r {
+    color: var(--red-light);
+    background: rgba(166,61,47,0.12);
+  }
+  .pbtn-s {
+    color: var(--gold);
+    background: rgba(201,168,76,0.12);
+  }
+
+  .pbtn-label {
+    display: block;
+    font-size: 7px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    margin-bottom: 1px;
+    pointer-events: none;
+  }
+  .pbtn-price { pointer-events: none; }
+
+  /* Qty badge */
+  .qty-badge {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    background: var(--red);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  /* ─── ORDER PANEL ─── */
+  .opanel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+  .opanel.vis { transform: translateY(0); }
+
+  .otoggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 auto;
+    width: fit-content;
+    padding: 9px 22px;
+    background: var(--gold);
+    color: var(--bg);
+    font-family: var(--font-ui);
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    border-radius: 18px 18px 0 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.4);
+  }
+  .obadge {
+    background: var(--red);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .obody {
+    background: var(--card);
+    border-top: 2px solid var(--gold);
+    max-height: 50vh;
+    overflow-y: auto;
+    padding: 14px 18px 22px;
+    display: none;
+  }
+  .opanel.exp .obody { display: block; }
+
+  .obody-inner { max-width: 540px; margin: 0 auto; }
+  .otitle {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .olist { list-style: none; }
+  .olist li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-ui);
+    font-size: 13px;
+  }
+  .olist li:last-child { border-bottom: none; }
+  .oi-name { flex: 1; color: var(--cream); }
+  .oi-type { font-size: 10px; color: var(--cream-dim); margin-left: 4px; }
+  .oi-qty { display: flex; align-items: center; gap: 6px; margin: 0 10px; }
+  .qb {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    border: 1px solid var(--gold-dim);
+    background: none;
+    color: var(--gold);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-ui);
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+  }
+  .qn { font-weight: 600; min-width: 16px; text-align: center; color: var(--cream); }
+  .oi-price { font-weight: 600; color: var(--gold); min-width: 50px; text-align: right; }
+
+  .ototal {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0 0;
+    margin-top: 6px;
+    border-top: 2px solid var(--gold-dim);
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .ototal-l { color: var(--cream); }
+  .ototal-p { color: var(--gold); }
+
+  .oactions { margin-top: 12px; }
+  .btn-clr {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid var(--red);
+    background: none;
+    color: var(--red-light);
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+  }
+
+  .oempty {
+    text-align: center;
+    color: var(--cream-dim);
+    font-family: var(--font-ui);
+    font-size: 12px;
+    padding: 16px 0;
+    font-style: italic;
+  }
+
+  .foot {
+    text-align: center;
+    padding: 24px 16px 16px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-style: italic;
+    color: var(--cream-dim);
+    line-height: 1.6;
+    border-top: 1px solid var(--border);
+    margin-top: 16px;
+  }
+  .foot strong {
+    color: var(--gold);
+    font-style: normal;
+    display: block;
+    font-family: var(--font-ui);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  .obody::-webkit-scrollbar { width: 3px; }
+  .obody::-webkit-scrollbar-track { background: var(--bg); }
+  .obody::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div style="text-align:center">
+      <div class="logo-name">VITA<span class="logo-dot">·</span>K</div>
+      <div class="logo-sub">Estrella 12</div>
+    </div>
+    <button class="lang-btn" id="langBtn">EN</button>
+  </div>
+</header>
+
+<div class="orn">— ✦ —</div>
+
+<div class="wrap">
+  <div class="sec-title" data-es="Tapas y Raciones" data-en="Tapas & Dishes">Tapas y Raciones</div>
+  <div class="sec-sub" data-es="Toca un precio para añadir al pedido" data-en="Tap a price to add to your order">Toca un precio para añadir al pedido</div>
+  <div class="legend">
+    <span><i class="lt"></i> <span data-es="Tapa" data-en="Tapa">Tapa</span></span>
+    <span><i class="lr"></i> <span data-es="Ración" data-en="Full dish">Ración</span></span>
+  </div>
+
+  <div class="cat"><span data-es="Bocatines" data-en="Mini Sandwiches">Bocatines</span></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Mini Hamburguesa</div><div class="row-name-en">Mini Burger</div></div><div class="row-prices"><button class="pbtn pbtn-s" data-key="1-ud" data-name-es="Mini Hamburguesa" data-name-en="Mini Burger" data-price="2.50" data-type="ud"><span class="pbtn-label" data-es="Ud" data-en="Ea">Ud</span><span class="pbtn-price">2,50€</span></button></div></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Bocatín de Lomo Completo</div><div class="row-name-en">Pork Loin Mini Sandwich</div></div><div class="row-prices"><button class="pbtn pbtn-s" data-key="2-ud" data-name-es="Bocatín de Lomo" data-name-en="Pork Loin Sandwich" data-price="2.50" data-type="ud"><span class="pbtn-label" data-es="Ud" data-en="Ea">Ud</span><span class="pbtn-price">2,50€</span></button></div></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Bocatín Carne Estofada con Queso</div><div class="row-name-en">Stewed Beef & Cheese Sandwich</div></div><div class="row-prices"><button class="pbtn pbtn-s" data-key="3-ud" data-name-es="Bocatín Estofado" data-name-en="Stewed Beef Sandwich" data-price="2.50" data-type="ud"><span class="pbtn-label" data-es="Ud" data-en="Ea">Ud</span><span class="pbtn-price">2,50€</span></button></div></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Bocatín de Calamares con Alioli</div><div class="row-name-en">Squid & Aioli Sandwich</div></div><div class="row-prices"><button class="pbtn pbtn-s" data-key="4-ud" data-name-es="Bocatín Calamares" data-name-en="Squid Sandwich" data-price="2.50" data-type="ud"><span class="pbtn-label" data-es="Ud" data-en="Ea">Ud</span><span class="pbtn-price">2,50€</span></button></div></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Preñadito de Chorizo</div><div class="row-name-en">Chorizo Stuffed Bread</div></div><div class="row-prices"><button class="pbtn pbtn-s" data-key="5-ud" data-name-es="Preñadito" data-name-en="Chorizo Bread" data-price="2.50" data-type="ud"><span class="pbtn-label" data-es="Ud" data-en="Ea">Ud</span><span class="pbtn-price">2,50€</span></button></div></div>
+
+  <div class="cat"><span data-es="Tapas y Raciones" data-en="Tapas & Full Dishes">Tapas y Raciones</span></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Crujiente de Pollo</div><div class="row-name-en">Crispy Chicken</div></div><div class="row-prices"><button class="pbtn pbtn-t" data-key="6-tapa" data-name-es="Crujiente Pollo" data-name-en="Crispy Chicken" data-price="1.90" data-type="tapa"><span class="pbtn-label">Tapa</span><span class="pbtn-price">1,90€</span></button><button class="pbtn pbtn-r" data-key="6-ración" data-name-es="Crujiente Pollo" data-name-en="Crispy Chicken" data-price="9.50" data-type="ración"><span class="pbtn-label" data-es="Ración" data-en="Full">Ración</span><span class="pbtn-price">9,50€</span></button></div></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Filete Empanado</div><div class="row-name-en">Breaded Fillet</div></div><div class="row-prices"><button class="pbtn pbtn-t" data-key="7-tapa" data-name-es="Filete Empanado" data-name-en="Breaded Fillet" data-price="1.90" data-type="tapa"><span class="pbtn-label">Tapa</span><span class="pbtn-price">1,90€</span></button><button class="pbtn pbtn-r" data-key="7-ración" data-name-es="Filete Empanado" data-name-en="Breaded Fillet" data-price="9.50" data-type="ración"><span class="pbtn-label" data-es="Ración" data-en="Full">Ración</span><span class="pbtn-price">9,50€</span></button></div></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Albóndiga</div><div class="row-name-en">Meatball</div></div><div class="row-prices"><button class="pbtn pbtn-t" data-key="8-tapa" data-name-es="Albóndiga" data-name-en="Meatball" data-price="1.90" data-type="tapa"><span class="pbtn-label">Tapa</span><span class="pbtn-price">1,90€</span></button><button class="pbtn pbtn-r" data-key="8-ración" data-name-es="Albóndiga" data-name-en="Meatball" data-price="9.50" data-type="ración"><span class="pbtn-label" data-es="Ración" data-en="Full">Ración</span><span class="pbtn-price">9,50€</span></button></div></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Croquetas Caseras</div><div class="row-name-en">Homemade Croquettes</div></div><div class="row-prices"><button class="pbtn pbtn-t" data-key="9-tapa" data-name-es="Croquetas" data-name-en="Croquettes" data-price="1.90" data-type="tapa"><span class="pbtn-label">Tapa</span><span class="pbtn-price">1,90€</span></button><button class="pbtn pbtn-r" data-key="9-ración" data-name-es="Croquetas" data-name-en="Croquettes" data-price="9.50" data-type="ración"><span class="pbtn-label" data-es="Ración" data-en="Full">Ración</span><span class="pbtn-price">9,50€</span></button></div></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Tortilla de Patata</div><div class="row-name-en">Spanish Omelette</div><div class="row-note" data-es="Con o sin cebolla" data-en="With or without onion">Con o sin cebolla</div></div><div class="row-prices"><button class="pbtn pbtn-t" data-key="10-tapa" data-name-es="Tortilla" data-name-en="Sp. Omelette" data-price="1.90" data-type="tapa"><span class="pbtn-label">Tapa</span><span class="pbtn-price">1,90€</span></button><button class="pbtn pbtn-r" data-key="10-ración" data-name-es="Tortilla" data-name-en="Sp. Omelette" data-price="9.50" data-type="ración"><span class="pbtn-label" data-es="Ración" data-en="Full">Ración</span><span class="pbtn-price">9,50€</span></button></div></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Calamares</div><div class="row-name-en">Fried Squid Rings</div></div><div class="row-prices"><button class="pbtn pbtn-t" data-key="11-tapa" data-name-es="Calamares" data-name-en="Squid Rings" data-price="1.90" data-type="tapa"><span class="pbtn-label">Tapa</span><span class="pbtn-price">1,90€</span></button><button class="pbtn pbtn-r" data-key="11-ración" data-name-es="Calamares" data-name-en="Squid Rings" data-price="12.00" data-type="ración"><span class="pbtn-label" data-es="Ración" data-en="Full">Ración</span><span class="pbtn-price">12,00€</span></button></div></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Carne Asada</div><div class="row-name-en">Grilled Meat</div></div><div class="row-prices"><button class="pbtn pbtn-t" data-key="12-tapa" data-name-es="Carne Asada" data-name-en="Grilled Meat" data-price="1.90" data-type="tapa"><span class="pbtn-label">Tapa</span><span class="pbtn-price">1,90€</span></button><button class="pbtn pbtn-r" data-key="12-ración" data-name-es="Carne Asada" data-name-en="Grilled Meat" data-price="9.50" data-type="ración"><span class="pbtn-label" data-es="Ración" data-en="Full">Ración</span><span class="pbtn-price">9,50€</span></button></div></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Oreja con Aove y Pimentón</div><div class="row-name-en">Pig Ear with Olive Oil & Paprika</div></div><div class="row-prices"><button class="pbtn pbtn-t" data-key="13-tapa" data-name-es="Oreja" data-name-en="Pig Ear" data-price="1.90" data-type="tapa"><span class="pbtn-label">Tapa</span><span class="pbtn-price">1,90€</span></button><button class="pbtn pbtn-r" data-key="13-ración" data-name-es="Oreja" data-name-en="Pig Ear" data-price="9.50" data-type="ración"><span class="pbtn-label" data-es="Ración" data-en="Full">Ración</span><span class="pbtn-price">9,50€</span></button></div></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Ensalada de Pasta</div><div class="row-name-en">Pasta Salad</div></div><div class="row-prices"><button class="pbtn pbtn-t" data-key="14-tapa" data-name-es="Ensalada Pasta" data-name-en="Pasta Salad" data-price="1.90" data-type="tapa"><span class="pbtn-label">Tapa</span><span class="pbtn-price">1,90€</span></button><button class="pbtn pbtn-r" data-key="14-ración" data-name-es="Ensalada Pasta" data-name-en="Pasta Salad" data-price="9.50" data-type="ración"><span class="pbtn-label" data-es="Ración" data-en="Full">Ración</span><span class="pbtn-price">9,50€</span></button></div></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Ensaladilla</div><div class="row-name-en">Russian Salad</div></div><div class="row-prices"><button class="pbtn pbtn-t" data-key="15-tapa" data-name-es="Ensaladilla" data-name-en="Russian Salad" data-price="1.90" data-type="tapa"><span class="pbtn-label">Tapa</span><span class="pbtn-price">1,90€</span></button><button class="pbtn pbtn-r" data-key="15-ración" data-name-es="Ensaladilla" data-name-en="Russian Salad" data-price="9.50" data-type="ración"><span class="pbtn-label" data-es="Ración" data-en="Full">Ración</span><span class="pbtn-price">9,50€</span></button></div></div>
+
+  <div class="cat"><span data-es="Postres" data-en="Desserts">Postres</span></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Arroz con Leche</div><div class="row-name-en">Rice Pudding</div></div><div class="row-prices"><button class="pbtn pbtn-s" data-key="16-ud" data-name-es="Arroz con Leche" data-name-en="Rice Pudding" data-price="1.90" data-type="ud"><span class="pbtn-label" data-es="Ud" data-en="Ea">Ud</span><span class="pbtn-price">1,90€</span></button></div></div>
+
+  <div class="row"><div class="row-info"><div class="row-name">Mousse de Queso</div><div class="row-name-en">Cheese Mousse</div></div><div class="row-prices"><button class="pbtn pbtn-s" data-key="17-ud" data-name-es="Mousse de Queso" data-name-en="Cheese Mousse" data-price="1.90" data-type="ud"><span class="pbtn-label" data-es="Ud" data-en="Ea">Ud</span><span class="pbtn-price">1,90€</span></button></div></div>
+
+  <div class="foot">
+    <span data-es="Encarga a nuestro personal nuestra carne asada, tortilla, etc para llevar." data-en="Ask our staff about takeaway options for grilled meat, omelette, and more.">Encarga a nuestro personal nuestra carne asada, tortilla, etc para llevar.</span>
+    <strong data-es="Cocina abierta todo el día" data-en="Kitchen open all day">Cocina abierta todo el día</strong>
+  </div>
+</div>
+
+<!-- ORDER PANEL -->
+<div class="opanel" id="op">
+  <button class="otoggle" id="otog">
+    <span data-es="🧾 Mi Pedido" data-en="🧾 My Order">🧾 Mi Pedido</span>
+    <span class="obadge" id="obadge">0</span>
+  </button>
+  <div class="obody">
+    <div class="obody-inner">
+      <div class="otitle" data-es="Tu pedido para barra" data-en="Your bar order">Tu pedido para barra</div>
+      <ul class="olist" id="olist"></ul>
+      <div id="osum" style="display:none">
+        <div class="ototal">
+          <span class="ototal-l" data-es="Total estimado" data-en="Estimated total">Total estimado</span>
+          <span class="ototal-p" id="ototal">0,00€</span>
+        </div>
+        <div class="oactions">
+          <button class="btn-clr" id="btnClr" data-es="Borrar todo" data-en="Clear all">Borrar todo</button>
+        </div>
+      </div>
+      <div class="oempty" id="oempty" data-es="Aún no has añadido nada" data-en="You haven't added anything yet">Aún no has añadido nada</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var order = {};
+  var lang = 'es';
+  var expanded = false;
+  var panel = document.getElementById('op');
+  var badge = document.getElementById('obadge');
+  var list = document.getElementById('olist');
+  var sum = document.getElementById('osum');
+  var empty = document.getElementById('oempty');
+  var totalEl = document.getElementById('ototal');
+
+  document.getElementById('langBtn').addEventListener('click', function() {
+    lang = lang === 'es' ? 'en' : 'es';
+    this.textContent = lang === 'es' ? 'EN' : 'ES';
+    document.body.classList.toggle('en', lang === 'en');
+    document.querySelectorAll('[data-es]').forEach(function(el) {
+      el.textContent = el.getAttribute('data-' + lang);
+    });
+    render();
+  });
+
+  document.getElementById('otog').addEventListener('click', function() {
+    expanded = !expanded;
+    panel.classList.toggle('exp', expanded);
+  });
+
+  document.getElementById('btnClr').addEventListener('click', function() {
+    order = {};
+    updateBadges();
+    render();
+  });
+
+  // Price button clicks via event delegation
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.pbtn');
+    if (!btn || btn.closest('.opanel')) return;
+    var key = btn.dataset.key;
+    if (!order[key]) {
+      order[key] = {
+        nameEs: btn.dataset.nameEs,
+        nameEn: btn.dataset.nameEn,
+        price: parseFloat(btn.dataset.price),
+        type: btn.dataset.type,
+        qty: 0
+      };
+    }
+    order[key].qty++;
+    if (navigator.vibrate) navigator.vibrate(20);
+    updateBadges();
+    render();
+  });
+
+  // Qty buttons in order panel
+  document.addEventListener('click', function(e) {
+    var qb = e.target.closest('.qb');
+    if (!qb) return;
+    var key = qb.dataset.qk;
+    var delta = parseInt(qb.dataset.qd);
+    if (!order[key]) return;
+    order[key].qty += delta;
+    if (order[key].qty <= 0) delete order[key];
+    updateBadges();
+    render();
+  });
+
+  function updateBadges() {
+    document.querySelectorAll('.qty-badge').forEach(function(b) { b.remove(); });
+    Object.keys(order).forEach(function(key) {
+      if (order[key].qty > 0) {
+        var btn = document.querySelector('.pbtn[data-key="' + key + '"]');
+        if (btn) {
+          var b = document.createElement('span');
+          b.className = 'qty-badge';
+          b.textContent = order[key].qty;
+          btn.appendChild(b);
+        }
+      }
+    });
+  }
+
+  function render() {
+    var keys = Object.keys(order);
+    var totalItems = 0, totalPrice = 0;
+    keys.forEach(function(k) {
+      totalItems += order[k].qty;
+      totalPrice += order[k].price * order[k].qty;
+    });
+
+    badge.textContent = totalItems;
+    panel.classList.toggle('vis', totalItems > 0);
+    if (totalItems === 0) { expanded = false; panel.classList.remove('exp'); }
+
+    if (keys.length === 0) {
+      list.innerHTML = '';
+      sum.style.display = 'none';
+      empty.style.display = 'block';
+      return;
+    }
+
+    empty.style.display = 'none';
+    sum.style.display = 'block';
+
+    var tl = { es: { tapa:'tapa', 'ración':'ración', ud:'' }, en: { tapa:'tapa', 'ración':'full', ud:'' } };
+
+    list.innerHTML = keys.map(function(k) {
+      var it = order[k];
+      var name = lang === 'en' ? it.nameEn : it.nameEs;
+      var tp = tl[lang][it.type];
+      var lp = (it.price * it.qty).toFixed(2).replace('.', ',');
+      return '<li><span class="oi-name">' + name + (tp ? ' <span class="oi-type">(' + tp + ')</span>' : '') + '</span><span class="oi-qty"><button class="qb" data-qk="' + k + '" data-qd="-1">\u2212</button><span class="qn">' + it.qty + '</span><button class="qb" data-qk="' + k + '" data-qd="1">+</button></span><span class="oi-price">' + lp + '\u20ac</span></li>';
+    }).join('');
+
+    totalEl.textContent = totalPrice.toFixed(2).replace('.', ',') + '\u20ac';
+  }
+})();
+</script>
+</body>
+</html>
